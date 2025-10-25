@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathématiques 3e - Collection Excellence</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: #0066cc;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+        
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-right: 20px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 20px;
+            margin: 25px 0 15px;
+            color: #0066cc;
+            border-bottom: 2px solid #0066cc;
+            padding-bottom: 5px;
+        }
+        
+        .form-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        
+        select, input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        .btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #0052a3;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .preview-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .fiche-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+        
+        .fiche-content {
+            line-height: 1.8;
+        }
+        
+        .fiche-section {
+            margin-bottom: 20px;
+        }
+        
+        .fiche-section h3 {
+            color: #0066cc;
+            margin-bottom: 10px;
+            border-left: 4px solid #0066cc;
+            padding-left: 10px;
+        }
+        
+        .fiche-section ul {
+            margin-left: 20px;
+        }
+        
+        .fiche-section li {
+            margin-bottom: 8px;
+        }
+        
+        /* Styles pour le manuel */
+        .manuel-section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .manuel-header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+        
+        .part {
+            margin-bottom: 40px;
+        }
+        
+        .chapter {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .authors {
+            font-style: italic;
+            margin-top: 20px;
+        }
+        
+        .copyright {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        
+        .section {
+            margin-left: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            border-bottom: 2px solid #0066cc;
+            margin-bottom: 20px;
+        }
+        
+        .nav-tab {
+            padding: 10px 20px;
+            background-color: #f0f0f0;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-tab.active {
+            background-color: #0066cc;
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .form-section, .preview-section, .manuel-section {
+                padding: 15px;
+            }
+            
+            .logo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-section">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Emblem_of_Togo.svg/220px-Emblem_of_Togo.svg.png" alt="Emblème du Togo" class="logo">
+                <div>
+                    <h1>MINISTÈRE DES ENSEIGNEMENTS PRIMAIRES, SECONDAIRES, TECHNIQUES ET DE L'ARTISANAT</h1>
+                    <p>RÉPUBLIQUE TOGOLAISE - Travail-Liberté-Patrie</p>
+                    <p>DIRECTION DE L'ENSEIGNEMENT SECONDAIRE GÉNÉRAL</p>
+                </div>
+            </div>
+            <h1>Mathématiques 3e - Collection Excellence</h1>
+            <p>Programme PAREC 2021-2022</p>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="manuel">Manuel</button>
+            <button class="nav-tab" data-tab="generateur">Générateur de Fiches</button>
+        </div>
+        
+        <!-- Onglet Manuel -->
+        <div id="manuel" class="tab-content active">
+            <div class="manuel-section">
+                <div class="manuel-header">
+                    <h1>Collection Excellence</h1>
+                    <h1>MATHS 3e</h1>
+                    <div class="authors">
+                        <p>Auteurs :</p>
+                        <p>Mme Alda Gassman DIALLO, Birane PAYE, Ismaël MAYE, Baro BADJI, Souleymane NUIAYE, Dado BA NUIAYE, Chaotic PAYE, Gorgui PAYE</p>
+                        <p>Coordonnateur de la collection : Gorgui PAYE</p>
+                        <p>Directeur de collection : Monradou SANXILARE, Professeur à l'UCAD</p>
+                    </div>
+                </div>
+
+                <div class="part">
+                    <h2>Partie Algèbre</h2>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 5 : VECTEURS</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>5-1 Addition vectorielle (construction et définition)</li>
+                                <li>5-2 Propriétés de l'addition vectorielle</li>
+                                <li>5-3 Multiplication d'un vecteur par un nombre réel (construction et définition)</li>
+                                <li>5-4 Propriétés de la multiplication d'un vecteur par un réel</li>
+                                <li>5-5 Vecteurs colinéaires</li>
+                            </ul>
+                            <p>Introduction : L'étude des vecteurs commencée en classe de quatrième est poursuivie en troisième avec l'addition vectorielle et la multiplication d'un vecteur par un réel.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 6 : REPÉRAGE DANS LE PLAN</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>6-1 Distance entre deux points</li>
+                                <li>6-2 Coordonnées d'un vecteur</li>
+                                <li>6-3 Vecteurs égaux - Vecteurs opposés</li>
+                                <li>6-4 Somme de deux vecteurs : Produit d'un vecteur par un réel : Vecteur nul</li>
+                                <li>6-5 Vecteurs orthogonaux</li>
+                                <li>6-6 Vecteurs orthogonaux</li>
+                                <li>6-7 Équation d'une droite dont on connaît deux points</li>
+                                <li>6-8 Équation réduite d'une droite</li>
+                                <li>6-9 Coefficient directeur et vecteur directeur</li>
+                                <li>6-10 Équation d'une droite dont on connaît le coefficient directeur et un point ou un vecteur directeur et un point</li>
+                                <li>6-11 Propriétés</li>
+                                <li>6-12 Représentation graphique d'une droite à partir d'une équation</li>
+                                <li>6-13 Représentation graphique d'une droite à partir d'un de ses points et de son coefficient directeur</li>
+                                <li>6-14 Représentation graphique d'une droite à partir d'un de ses points et d'un vecteur directeur</li>
+                            </ul>
+                            <p>Introduction : La géométrie analytique est l'art de résoudre des problèmes de géométrie par le calcul numérique.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 8 : RACINE CARRÉE</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>8-1 Valeur exacte, valeur approchée, définition et notation de la racine carrée</li>
+                                <li>8-2 Nombre irrationnel : ensemble IR des nombres réels</li>
+                                <li>8-3 Calcul algébrique dans IR</li>
+                                <li>8-4 Propriétés de la racine carrée</li>
+                                <li>8-5 Rendre rationnel un dénominateur irrationnel</li>
+                                <li>8-6 Comparaison de réels comportant des radicaux</li>
+                                <li>8-7 Valeur absolue d'un nombre réel</li>
+                                <li>8-8 Racine carrée du carré d'un réel</li>
+                                <li>8-9 Encadrement d'une expression comportant un radical</li>
+                            </ul>
+                            <p>Introduction : La racine carrée est très utilisée en sciences physiques et a conduit à la création de l'ensemble des nombres réels.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 9 : APPLICATIONS AFFINES ET APPLICATIONS AFFINES PAR INTERVALLES</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>9-1 Applications affines - Présentation</li>
+                                <li>9-2 Représentation graphique d'une application affine</li>
+                                <li>9-3 Variations d'une application affine</li>
+                                <li>9-4 Détermination de l'expression littérale d'une application affine</li>
+                                <li>9-5 Utilisation des applications affines</li>
+                                <li>9-6 Application affine par intervalles du type f : x → |ax + b|</li>
+                            </ul>
+                            <p>Introduction : Les applications affines sont utilisées en démographie (taux de natalité), en économie (taux de production) et en physique (étude de distance).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 10 : ÉQUATION ET INÉQUATION À UNE INCONNUE</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>10-1 Équation du type |ax + b| = |cx + d|</li>
+                                <li>10-2 Équation du type ax² + b = 0</li>
+                                <li>10-3 Inéquations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part">
+                    <h2>Partie Géométrie</h2>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 1 : THÉORÈME DE THALÈS</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>1-1 Cas du triangle</li>
+                                <li>1-2 Théorème réciproque</li>
+                                <li>1-3 Cas du trapèze</li>
+                                <li>1-4 Agrandissement et réduction</li>
+                                <li>1-5 Partage d'un segment dans un rapport donné</li>
+                            </ul>
+                            <p>Introduction : Le théorème de Thalès apparaît comme une extension des théorèmes de la droite. Il permet de résoudre des problèmes sur les calculs de longueur et le parallélisme de droites.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 2 : RELATIONS TRIGONOMÉTRIQUES DANS UN TRIANGLE RECTANGLE</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>2-1 Cosinus, sinus et tangente d'un angle aigu</li>
+                                <li>2-2 Relation entre le sinus et le cosinus d'un même angle aigu</li>
+                                <li>2-3 Relation entre le sinus et le cosinus de deux angles complémentaires</li>
+                                <li>2-4 Sinus, cosinus et tangente d'un angle de mesure : 30°, 45° ou 60°</li>
+                            </ul>
+                            <p>Introduction : La trigonométrie vient du grec "trigônon" (triangle) et "metron" (mesure). Elle étudie les relations entre les longueurs des côtés et les mesures des angles d'un triangle.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 3 : GÉOMÉTRIE DANS L'ESPACE</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>3-1 Présentation d'une pyramide</li>
+                                <li>3-2 Représentation plane d'une pyramide</li>
+                                <li>3-3 Patron d'une pyramide</li>
+                                <li>3-4 Présentation d'un cône de révolution</li>
+                                <li>3-5 Représentation plane d'un cône de révolution</li>
+                                <li>3-6 Patron d'un cône de révolution</li>
+                                <li>3-7 Volume de la pyramide et d'un cône de révolution</li>
+                                <li>3-8 Section d'une pyramide ou d'un cône de révolution par un plan parallèle à la base</li>
+                            </ul>
+                            <p>Introduction : L'étude de la géométrie dans l'espace se poursuit avec l'étude de la pyramide et du cône de révolution, en utilisant les notions de patron et de réduction.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 4 : ANGLES INSCRITS ET ANGLES AU CENTRE</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>4-1 Présentation - Définition</li>
+                                <li>4-2 Comparaison d'un angle inscrit et de l'angle au centre associé</li>
+                                <li>4-3 Comparaison d'angles inscrits qui interceptent le même arc</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="chapter">
+                        <h3>CHAPITRE 7 : TRANSFORMATIONS DU PLAN</h3>
+                        <div class="section">
+                            <h4>Sommaire</h4>
+                            <ul>
+                                <li>7-1 Exemples de transformations</li>
+                                <li>7-2 Étude de deux translations successives</li>
+                                <li>7-3 Étude de deux symétries centrales successives</li>
+                                <li>7-4 Étude de deux symétries orthogonales successives</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="copyright">
+                    <p>Il est interdit de reproduire, d'enregistrer ou de diffuser, en tout ou en partie, le présent ouvrage par quelque procédé que ce soit, électronique, mécanique, photographique, magnétique ou autre, sans avoir obtenu au préalable l'autorisation écrite de l'éditeur.</p>
+                    <p>Dépôt légal, octobre 2008 - Imprimé au Sénégal - ISBN 2-91510402-6</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Onglet Générateur de Fiches -->
+        <div id="generateur" class="tab-content">
+            <div class="form-section">
+                <h2>Sélection du thème et de la leçon</h2>
+                
+                <div class="form-group">
+                    <label for="theme">Thème :</label>
+                    <select id="theme" name="theme" required>
+                        <option value="">Sélectionnez un thème</option>
+                        <option value="configurations_espace">Configurations de l'espace</option>
+                        <option value="configurations_plan">Configurations du plan</option>
+                        <option value="applications_plan">Applications du plan</option>
+                        <option value="outil_vectoriel">Outil vectoriel, géométrie analytique</option>
+                        <option value="calcul_numerique">Calcul numérique</option>
+                        <option value="calcul_litteral">Programme de calcul - calcul littéral</option>
+                        <option value="organisation_donnees">Organisation des données et fonctions</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lecon">Leçon :</label>
+                    <select id="lecon" name="lecon" required>
+                        <option value="">Sélectionnez d'abord un thème</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="duree">Durée prévue :</label>
+                    <input type="text" id="duree" name="duree" placeholder="Ex: 6 heures">
+                </div>
+                
+                <div class="form-group">
+                    <label for="objectifs">Objectifs d'apprentissage :</label>
+                    <textarea id="objectifs" name="objectifs" placeholder="Décrivez les objectifs spécifiques de cette leçon..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Capacités à développer :</label>
+                    <div class="checkbox-group" id="capacites-container">
+                        <!-- Les cases à cocher seront générées dynamiquement en fonction de la leçon sélectionnée -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="strategies">Stratégies pédagogiques :</label>
+                    <textarea id="strategies" name="strategies" placeholder="Décrivez les stratégies d'enseignement..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="activites">Activités prévues :</label>
+                    <textarea id="activites" name="activites" placeholder="Décrivez les activités d'apprentissage..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="materiel">Matériel nécessaire :</label>
+                    <textarea id="materiel" name="materiel" placeholder="Listez le matériel nécessaire..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="evaluation">Modalités d'évaluation :</label>
+                    <textarea id="evaluation" name="evaluation" placeholder="Décrivez comment les élèves seront évalués..."></textarea>
+                </div>
+                
+                <div class="btn-container">
+                    <button class="btn" id="generer-fiche">Générer la fiche pédagogique</button>
+                </div>
+            </div>
+            
+            <div class="preview-section" id="preview-section">
+                <h2 class="fiche-title">Fiche Pédagogique Générée</h2>
+                <div class="fiche-content" id="fiche-content">
+                    <!-- Le contenu de la fiche sera généré ici -->
+                </div>
+                <div class="btn-container">
+                    <button class="btn" id="imprimer-fiche">Imprimer la fiche</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Données des leçons par thème avec leurs capacités
+        const leconsParTheme = {
+            configurations_espace: {
+                "Pyramide": [
+                    "Reconnaître/Identifier un solide",
+                    "Décrire un solide",
+                    "Construire le patron d'un solide",
+                    "Réaliser le solide à partir du patron",
+                    "Représenter en perspective cavalière",
+                    "Calculer des grandeurs (aire latérale, aire totale, volume)"
+                ],
+                "Cône de révolution": [
+                    "Reconnaître/Identifier un solide",
+                    "Décrire un solide",
+                    "Construire le patron d'un solide",
+                    "Réaliser le solide à partir du patron",
+                    "Représenter en perspective cavalière",
+                    "Calculer des grandeurs (aire latérale, aire totale, volume)"
+                ]
+            },
+            configurations_plan: {
+                "Angles inscrits dans un cercle": [
+                    "Reconnaître/Identifier une configuration",
+                    "Nommer une configuration",
+                    "Calculer des grandeurs (mesures d'angle)",
+                    "Justifier (égalité angulaire, nature d'un angle)"
+                ],
+                "Propriété de Thalès": [
+                    "Reconnaître/Identifier une configuration",
+                    "Calculer des grandeurs (longueur des segments, partage d'un segment)",
+                    "Justifier (parallélisme de droites)"
+                ],
+                "Trigonométrie dans le triangle rectangle": [
+                    "Reconnaître/Identifier une configuration",
+                    "Calculer des grandeurs (cosinus, sinus, tangente, longueur, mesure d'angle)",
+                    "Utiliser une table trigonométrique ou calculatrice"
+                ]
+            },
+            applications_plan: {
+                "Symétries orthogonales, symétries centrales, translations": [
+                    "Reconnaître/Identifier une application du plan",
+                    "Construire (image d'une figure)",
+                    "Justifier (propriété d'une configuration, programme de construction)"
+                ],
+                "Homothéties": [
+                    "Reconnaître/Identifier une application du plan",
+                    "Construire (image d'un point, d'une figure)",
+                    "Calculer des grandeurs (longueur, aire, mesure d'angle)"
+                ]
+            },
+            outil_vectoriel: {
+                "Vecteurs": [
+                    "Reconnaître/Identifier (somme, opposés, produit, vecteurs colinéaires/orthogonaux)",
+                    "Représenter",
+                    "Justifier (parallélisme, alignement, perpendicularité)"
+                ],
+                "Coordonnées et calculs dans un repère": [
+                    "Reconnaître/Identifier (coordonnées)",
+                    "Lire (coordonnées sur un graphique)",
+                    "Calculer (coordonnées, distance, norme)",
+                    "Justifier (égalité, colinéarité, orthogonalité)"
+                ],
+                "Equations de droites": [
+                    "Reconnaître une équation de droite",
+                    "Représenter",
+                    "Déterminer (équation, coordonnées)",
+                    "Justifier (appartenance, parallélisme, perpendicularité, alignement)"
+                ]
+            },
+            calcul_numerique: {
+                "Nombres réels": [
+                    "Reconnaître un nombre (racine carrée, valeur absolue, intervalles)",
+                    "Calculer (expressions avec radicaux, comparaison, calcul approché, puissances)",
+                    "Justifier (égalité de nombres avec radicaux)"
+                ]
+            },
+            calcul_litteral: {
+                "Monômes, polynômes, fractions rationnelles": [
+                    "Reconnaître",
+                    "Calculer (développement, réduction, factorisation, valeur numérique, simplification)",
+                    "Justifier (existence d'une valeur numérique, égalité de polynômes)"
+                ],
+                "Equations - Inéquations": [
+                    "Reconnaître (équations, inéquations, systèmes)",
+                    "Résoudre (équations, inéquations, systèmes)",
+                    "Modéliser un problème"
+                ]
+            },
+            organisation_donnees: {
+                "Applications linéaires, applications affines": [
+                    "Reconnaître/Décrire une application",
+                    "Représenter une application (tableaux, graphiques)",
+                    "Calculer (image, antécédent, comparaison)",
+                    "Modéliser un problème"
+                ],
+                "Statistiques": [
+                    "Présenter et organiser des données",
+                    "Calculer des grandeurs (effectifs, fréquences, moyenne)",
+                    "Construire des diagrammes"
+                ]
+            }
+        };
+
+        // Éléments du DOM
+        const themeSelect = document.getElementById('theme');
+        const leconSelect = document.getElementById('lecon');
+        const capacitesContainer = document.getElementById('capacites-container');
+        const genererBtn = document.getElementById('generer-fiche');
+        const previewSection = document.getElementById('preview-section');
+        const ficheContent = document.getElementById('fiche-content');
+        const imprimerBtn = document.getElementById('imprimer-fiche');
+        const navTabs = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        // Navigation par onglets
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                // Mettre à jour les onglets actifs
+                navTabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Mettre à jour les leçons lorsque le thème change
+        themeSelect.addEventListener('change', function() {
+            const theme = this.value;
+            leconSelect.innerHTML = '<option value="">Sélectionnez une leçon</option>';
+            
+            if (theme && leconsParTheme[theme]) {
+                for (const lecon in leconsParTheme[theme]) {
+                    const option = document.createElement('option');
+                    option.value = lecon;
+                    option.textContent = lecon;
+                    leconSelect.appendChild(option);
+                }
+            }
+            
+            // Réinitialiser les capacités
+            capacitesContainer.innerHTML = '';
+        });
+
+        // Mettre à jour les capacités lorsque la leçon change
+        leconSelect.addEventListener('change', function() {
+            const theme = themeSelect.value;
+            const lecon = this.value;
+            
+            capacitesContainer.innerHTML = '';
+            
+            if (theme && lecon && leconsParTheme[theme] && leconsParTheme[theme][lecon]) {
+                leconsParTheme[theme][lecon].forEach(capacite => {
+                    const div = document.createElement('div');
+                    div.className = 'checkbox-item';
+                    
+                    const input = document.createElement('input');
+                    input.type = 'checkbox';
+                    input.id = `capacite-${capacite.replace(/\s+/g, '-')}`;
+                    input.name = 'capacites';
+                    input.value = capacite;
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = input.id;
+                    label.textContent = capacite;
+                    
+                    div.appendChild(input);
+                    div.appendChild(label);
+                    capacitesContainer.appendChild(div);
+                });
+            }
+        });
+
+        // Générer la fiche pédagogique
+        genererBtn.addEventListener('click', function() {
+            const theme = themeSelect.value;
+            const lecon = leconSelect.value;
+            const duree = document.getElementById('duree').value;
+            const objectifs = document.getElementById('objectifs').value;
+            const strategies = document.getElementById('strategies').value;
+            const activites = document.getElementById('activites').value;
+            const materiel = document.getElementById('materiel').value;
+            const evaluation = document.getElementById('evaluation').value;
+            
+            // Récupérer les capacités sélectionnées
+            const capacitesSelectionnees = [];
+            document.querySelectorAll('input[name="capacites"]:checked').forEach(checkbox => {
+                capacitesSelectionnees.push(checkbox.value);
+            });
+            
+            if (!theme || !lecon) {
+                alert('Veuillez sélectionner un thème et une leçon.');
+                return;
+            }
+            
+            // Générer le contenu de la fiche
+            let contenuHTML = `
+                <div class="fiche-section">
+                    <h3>Informations générales</h3>
+                    <p><strong>Thème :</strong> ${getThemeName(theme)}</p>
+                    <p><strong>Leçon :</strong> ${lecon}</p>
+                    <p><strong>Durée prévue :</strong> ${duree || 'Non spécifiée'}</p>
+                </div>
+                
+                <div class="fiche-section">
+                    <h3>Objectifs d'apprentissage</h3>
+                    <p>${objectifs || 'À définir'}</p>
+                </div>
+                
+                <div class="fiche-section">
+                    <h3>Capacités à développer</h3>
+                    <ul>
+            `;
+            
+            if (capacitesSelectionnees.length > 0) {
+                capacitesSelectionnees.forEach(capacite => {
+                    contenuHTML += `<li>${capacite}</li>`;
+                });
+            } else {
+                contenuHTML += `<li>Aucune capacité sélectionnée</li>`;
+            }
+            
+            contenuHTML += `
+                    </ul>
+                </div>
+                
+                <div class="fiche-section">
+                    <h3>Stratégies pédagogiques</h3>
+                    <p>${strategies || 'À définir'}</p>
+                </div>
+                
+                <div class="fiche-section">
+                    <h3>Activités prévues</h3>
+                    <p>${activites || 'À définir'}</p>
+                </div>
+                
+                <div class="fiche-section">
+                    <h3>Matériel nécessaire</h3>
+                    <p>${materiel || 'À définir'}</p>
+                </div>
+                
+                <div class="fiche-section">
+                    <h3>Modalités d'évaluation</h3>
+                    <p>${evaluation || 'À définir'}</p>
+                </div>
+            `;
+            
+            ficheContent.innerHTML = contenuHTML;
+            previewSection.style.display = 'block';
+            
+            // Faire défiler jusqu'à la prévisualisation
+            previewSection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Fonction pour obtenir le nom complet du thème
+        function getThemeName(themeKey) {
+            const themes = {
+                configurations_espace: "Configurations de l'espace",
+                configurations_plan: "Configurations du plan",
+                applications_plan: "Applications du plan",
+                outil_vectoriel: "Outil vectoriel, géométrie analytique",
+                calcul_numerique: "Calcul numérique",
+                calcul_litteral: "Programme de calcul - calcul littéral",
+                organisation_donnees: "Organisation des données et fonctions"
+            };
+            
+            return themes[themeKey] || themeKey;
+        }
+
+        // Imprimer la fiche
+        imprimerBtn.addEventListener('click', function() {
+            window.print();
+        });
+    </script>
+</body>
+</html>
